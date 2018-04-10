@@ -10,18 +10,17 @@ package FormasGeometricasV1;
  * @author michel
  */
 public class FormaGeometrica {
-    protected Cor borda, preenchimento;
+
+    private Cor borda, preenchimento;
 
     public FormaGeometrica(Cor borda, Cor preenchimento) {
         this.borda = borda;
         this.preenchimento = preenchimento;
     }
 
-    public FormaGeometrica(Cor borda) {
-        this.borda = borda;
-    }
-
     public FormaGeometrica() {
+        borda = new Cor();
+        preenchimento = new Cor(255, 255, 255, 255);
     }
 
     public Cor getCorBorda() {
@@ -39,12 +38,23 @@ public class FormaGeometrica {
     public void setCorPreenchimento(Cor preenchimento) {
         this.preenchimento = preenchimento;
     }
-    
+
     public double area() {
-       return 0;
-    };
-    
-    public double perimetro(){
         return 0;
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+    
+    public boolean isIn(Ponto p) {
+        return false;
+    }
+    
+    public String toString() {
+        String s = "Forma: Eu sou um Circulo\n";
+        s += "Cor da Borda (a,r,g,b): (" + borda.getAlpha() + "," + borda.getRed() + "," + borda.getGreen() + "," + borda.getBlue() + ")\n";
+        s += "Cor de Preenchimento: (" + preenchimento.getAlpha() + "," + preenchimento.getRed() + "," + preenchimento.getGreen() + "," + preenchimento.getBlue() + ")\n";
+        return s;
     }
 }

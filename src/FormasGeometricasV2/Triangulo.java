@@ -7,24 +7,21 @@ public class Triangulo extends FormaGeometrica {
     private Ponto vertice3;
 
     public Triangulo() {
-        preenchimento = new Cor(255, 255, 255, 255);
-        borda = new Cor(255, 0, 0, 0);
+        super();
         vertice1 = new Ponto(0, 0);
         vertice2 = new Ponto(1, 0);
         vertice3 = new Ponto(0, 1);
     }
 
     public Triangulo(Ponto vertice1, Ponto vertice2, Ponto vertice3) {
-        preenchimento = new Cor(255, 255, 255, 255);
-        borda = new Cor(255, 0, 0, 0);
+        super();
         this.vertice1 = vertice1;
         this.vertice2 = vertice2;
         this.vertice3 = vertice3;
     }
 
     public Triangulo(Ponto vertice1, Ponto vertice2, Ponto vertice3, Cor borda, Cor preenchimento) {
-        this.borda = borda;
-        this.preenchimento = preenchimento;
+        super(borda, preenchimento);
         this.vertice1 = vertice1;
         this.vertice2 = vertice2;
         this.vertice3 = vertice3;
@@ -70,6 +67,7 @@ public class Triangulo extends FormaGeometrica {
         return perimetro;
     }
 
+    @Override
     public boolean isIn(Ponto p) {
         Triangulo triA = new Triangulo(vertice1, vertice2, p);
         Triangulo triB = new Triangulo(vertice1, vertice3, p);

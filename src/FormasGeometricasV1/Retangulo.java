@@ -6,22 +6,19 @@ public class Retangulo extends FormaGeometrica {
     private Ponto p2;
 
     public Retangulo() {
-        preenchimento = new Cor(255, 255, 255, 255);
-        borda = new Cor(255, 0, 0, 0);
+        super();
         p1 = new Ponto(0, 0);
         p2 = new Ponto(1, 1);
     }
 
     public Retangulo(Ponto p1, Ponto p2) {
-        preenchimento = new Cor(255, 255, 255, 255);
-        borda = new Cor(255, 0, 0, 0);
+        super();
         this.p1 = p1;
         this.p2 = p2;
     }
 
     public Retangulo(Ponto p1, Ponto p2, Cor borda, Cor preenchimento) {
-        this.borda = borda;
-        this.preenchimento = preenchimento;
+        super(borda, preenchimento);
         this.p1 = p1;
         this.p2 = p2;
     }
@@ -56,6 +53,7 @@ public class Retangulo extends FormaGeometrica {
         return perimetro;
     }
 
+    @Override
     public boolean isIn(Ponto p) {
         double minX, minY, maxX, maxY;
         if (p1.getX() < p2.getX()) {
@@ -80,8 +78,7 @@ public class Retangulo extends FormaGeometrica {
 
     public String toString() {
         String s = "Forma: Eu sou um Retangulo\n";
-        s += "Cor da Borda (a,r,g,b): (" + borda.getAlpha() + "," + borda.getRed() + "," + borda.getGreen() + "," + borda.getBlue() + ")\n";
-        s += "Cor de Preenchimento: (" + preenchimento.getAlpha() + "," + preenchimento.getRed() + "," + preenchimento.getGreen() + "," + preenchimento.getBlue() + ")\n";
+        super.toString();
         s += "Caracteristicas Geometricas\n";
         s += "Coordenadas do Vertice 1: (" + p1.getX() + "," + p1.getY() + ")\n";
         s += "Coordenadas do Vertice 2: (" + p2.getX() + "," + p2.getY() + ")\n";

@@ -11,7 +11,17 @@ package FormasGeometricasV2;
  */
 public abstract class FormaGeometrica {
 
-    protected Cor borda, preenchimento;
+    private Cor borda, preenchimento;
+
+    public FormaGeometrica(Cor borda, Cor preenchimento) {
+        this.borda = borda;
+        this.preenchimento = preenchimento;
+    }
+
+    public FormaGeometrica() {
+        borda = new Cor();
+        preenchimento = new Cor(255, 255, 255, 255);
+    }
 
     public Cor getCorBorda() {
         return borda;
@@ -32,4 +42,13 @@ public abstract class FormaGeometrica {
     public abstract double area();
 
     public abstract double perimetro();
+
+    public abstract boolean isIn(Ponto p);
+
+    public String toString() {
+        String s = "Forma: Eu sou um Circulo\n";
+        s += "Cor da Borda (a,r,g,b): (" + borda.getAlpha() + "," + borda.getRed() + "," + borda.getGreen() + "," + borda.getBlue() + ")\n";
+        s += "Cor de Preenchimento: (" + preenchimento.getAlpha() + "," + preenchimento.getRed() + "," + preenchimento.getGreen() + "," + preenchimento.getBlue() + ")\n";
+        return s;
+    }
 }

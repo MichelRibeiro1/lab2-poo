@@ -6,40 +6,21 @@ public class Circulo extends FormaGeometrica {
     private Ponto centro;
 
     public Circulo() {
-        preenchimento = new Cor(255, 255, 255, 255);
-        borda = new Cor(255, 0, 0, 0);
+        super();
         raio = 1;
         centro = new Ponto();
     }
 
     public Circulo(double raio, Ponto centro) {
-        preenchimento = new Cor(255, 255, 255, 255);
-        borda = new Cor(255, 0, 0, 0);
+        super();
         this.raio = raio;
         this.centro = centro;
     }
 
     public Circulo(double raio, Ponto centro, Cor borda, Cor preenchimento) {
-        this.borda = borda;
-        this.preenchimento = preenchimento;
+        super(borda, preenchimento);
         this.raio = raio;
         this.centro = centro;
-    }
-
-    public Cor getCorBorda() {
-        return borda;
-    }
-
-    public void setCorBorda(Cor borda) {
-        this.borda = borda;
-    }
-
-    public Cor getCorPreenchimento() {
-        return preenchimento;
-    }
-
-    public void setCorPreenchimento(Cor preenchimento) {
-        this.preenchimento = preenchimento;
     }
 
     public void setRaio(double raio) {
@@ -68,6 +49,7 @@ public class Circulo extends FormaGeometrica {
         return Math.PI * 2 * raio;
     }
 
+    @Override
     public boolean isIn(Ponto p) {
         double d;
         d = centro.distancia(p);
@@ -80,9 +62,8 @@ public class Circulo extends FormaGeometrica {
 
     public String toString() {
         String s = "Forma: Eu sou um Circulo\n";
-        s += "Cor da Borda (a,r,g,b): (" + borda.getAlpha() + "," + borda.getRed() + "," + borda.getGreen() + "," + borda.getBlue() + ")\n";
-        s += "Cor de Preenchimento: (" + preenchimento.getAlpha() + "," + preenchimento.getRed() + "," + preenchimento.getGreen() + "," + preenchimento.getBlue() + ")\n";
         s += "Caracteristicas Geometricas\n";
+        s += super.toString();
         s += "Coordenadas do centro: (" + centro.getX() + "," + centro.getY() + ")\n";
         s += "Raio: " + raio + "\n";
         s += "Area: " + area() + "\n";
